@@ -1,0 +1,112 @@
+create table parlour(branch_code varchar2(10) primary key, men_s varchar2(10),women_s varchar2(10));
+
+
+create table ownss(o_name varchar(20), o_city varchar(10),branch_code varchar(10), 
+CONSTRAINT ky FOREIGN KEY (branch_code)REFERENCES parlour(branch_code));
+
+create table employeee(e_id varchar2(10) primary key,e_name varchar(20), e_mobile varchar(10),skill varchar(30),sal varchar(10), branch_code varchar2(10),
+CONSTRAINT kk FOREIGN KEY (branch_code)REFERENCES parlour(branch_code)); 
+
+
+create table client(c_id varchar2(10) primary key, c_name varchar2(10),c_mobile varchar2(10),c_gender varchar2(10));
+
+
+create table provide(s_code varchar(10) primary key,s_name varchar(20), s_type varchar(10),branch_code varchar2(10), 
+CONSTRAINT oc FOREIGN KEY (branch_code)REFERENCES parlour(branch_code));
+
+
+create table owners_info(o_city varchar2(10) primary key,o_country varchar2(10));
+
+create table offers(package_code varchar2(10) primary key,package_name varchar(20), package_type varchar(10),discount varchar(10), branch_code varchar2(10),
+CONSTRAINT ou FOREIGN KEY (branch_code)REFERENCES parlour(branch_code)); 
+
+
+
+create table emp_client(e_id number(10),c_id number(10),constraint attach primary key(e_id,c_id));
+
+
+create table client_service(c_id number(10),s_id number(10),constraint attached primary key(c_id,s_id));
+
+
+
+
+
+
+insert into parlour values('P1023','Available','Available')
+
+insert into ownss values('Ananto Jalil','Dhaka','P1023')
+
+insert into employeee values('101','Nishat','016*******','hair stylist','$500','P1023')
+
+insert into employeee values('102','Anika','017*******','Beauty Job','$800','P1023')
+
+insert into employeee values('103','Tanjila','018*******','Spa Jobs','$700','P1023')
+
+insert into employeee values('104','Tanisha','019*******','Beauty Therapist','$900','P1023')
+
+insert into employeee values('105','Urmila','015*******','Nails Jobs','$400','P1023')
+
+
+
+
+insert into client values('1','Nishi','015*******','Female')
+
+insert into client values('2','Mim','016*******','Female')
+
+insert into client values('3','shompa','017*******','Female')
+
+insert into client values('4','Nazat','018*******','Male')
+
+insert into client values('5','Durjoy','019*******','Male')
+
+
+
+
+
+insert into provide values('201','Spa','Regular','P1023')
+
+insert into provide values('202','Beauty Therapy','Regular & Home service','P1023')
+
+insert into provide values('203','Nails','Regular','P1023')
+
+insert into provide values('204','Hair cutting','Regular & Home service','P1023')
+
+insert into provide values('205','beauty job','Regular','P1023')
+
+
+
+
+
+insert into owners_info values('Dhaka','Bangladesh')
+
+
+
+
+insert into offers values('P101','Spa Summer Offers','Available','15%','P1023')
+
+insert into offers values('P102','Hair Treatment','Regular client','35%','P1023')
+
+insert into offers values('P103','FREE Colour Treatment for the month of April','Regular client','100%','P1023')
+
+insert into offers values('P104','December Hair Straightening','Regular client','25%','P1023')
+
+insert into offers values('P105','weekly Beauty Therapy','Regular client','30%','P1023')
+
+
+
+insert into emp_client values('101','1')
+insert into emp_client values('102','2')
+insert into emp_client values('103','3')
+insert into emp_client values('104','4')
+insert into emp_client values('105','5')
+
+
+
+
+insert into client_service values('1','201')
+insert into client_service values('2','202')
+insert into client_service values('3','203')
+insert into client_service values('4','204')
+insert into client_service values('5','205')
+
+
